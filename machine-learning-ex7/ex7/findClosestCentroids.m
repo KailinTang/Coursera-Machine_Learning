@@ -21,11 +21,15 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
-
+for i = 1 : size(X, 1)
+    distanceVec = [];
+    for j = 1 :K
+        distanceVec(j, 1) = norm(X(i, :) - centroids(j, :)) ^ 2;
+    end
+    minimumDistance = min(distanceVec);
+    index = find(distanceVec == minimumDistance);
+    idx(i, 1) = index;
+end
 
 % =============================================================
 
