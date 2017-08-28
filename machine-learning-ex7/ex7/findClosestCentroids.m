@@ -22,12 +22,11 @@ idx = zeros(size(X,1), 1);
 %
 
 for i = 1 : size(X, 1)
-    distanceVec = [];
+    distanceVec = zeros(1,K);
     for j = 1 :K
-        distanceVec(j, 1) = norm(X(i, :) - centroids(j, :)) ^ 2;
+        distanceVec(1, j) = norm(X(i, :) - centroids(j, :)) ^ 2;
     end
-    minimumDistance = min(distanceVec);
-    index = find(distanceVec == minimumDistance);
+    [minimumDistance, index] = min(distanceVec);
     idx(i, 1) = index;
 end
 
